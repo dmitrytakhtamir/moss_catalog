@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<p><a href="{% url 'definer:definer_starter' %}"><button style="margin: 10px" class='back_btn' name='submit'>Назад</button></a></p>
+
+{% for card in cards %}
+	<div style='border: 1px solid grey; border-radius: 6px; background: #f8f4ff'>
+		Номер: {{card.id}}
+		{% if card.division %}
+		 | Отдел: <a href="{% url 'definer:taxons_observation' card.division card.id %}"><b>{{card.division}}</b></a>
+		{% endif %}
+		{% if card.moss_class %}
+		 | Класс: <a href="{% url 'definer:taxons_observation' card.moss_class card.id %}"><b>{{card.moss_class}}</b></a>
+		 {% endif %}
+		{% if card.subclass %}
+		 | Подкласс: <a href="{% url 'definer:taxons_observation' card.subclass card.id %}"><b>{{card.subclass}}</b></a>
+		{% endif %}
+		{% if card.order %}
+		 | Порядок: <a href="{% url 'definer:taxons_observation' card.order card.id %}"><b>{{card.order}}</b></a>
+		{% endif %}
+		{% if card.family %}
+		 | Семейство: <a href="{% url 'definer:taxons_observation' card.family card.id %}"><b>{{card.family}}</b></a>
+		{% endif %}
+		{% if card.genus %}
+		 | Род: <a href="{% url 'definer:taxons_observation' card.genus card.id %}"><b>{{card.genus}}</b></a>
+		{% endif %}
+		{% if card.species %}
+		 | Вид: <a href="{% url 'definer:taxons_observation' card.species card.id %}"><b>{{card.species}}</b></a>
+		{% endif %}	
+		 | Состояние: <b>{{card.activation}}</b>
+	<p>
+
+		<form action="{% url 'definer:activation_in_cards_list' card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+		<button name='submit' style="background: #00FEAD; color: #1686ab; width: 180px;" class='btn change_act'>Изменить состояние</button>
+		</form>
+
+		<form action="{% url 'definer:cards_list_freezing' card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+			<button style='background: #00EBFE; width:150px' class='btn third' name='submit'>{% if card.activation == 'Frozen' %}{{freez_button_name}}{% endif %}{% if card.activation == 'Act' %}{{button_name}}{% endif %}{% if card.activation == 'Deact' %}{{button_name}}{% endif %}</button>
+		</form>
+		<div style='float: right; padding: 1px'>
+		<a href="{% url 'definer:delete_card' card.id %}"><button type="button" style="display:inline-block;" class="main_button"  name='submit'>Удалить карточку</button></a>
+	</div>
+	</p>
+	</div>
+	<br>
+
+{% endfor %}
+{% endblock %}

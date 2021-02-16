@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2 align='center' class='display-4'>{{taxon.tax}} <strong>{{taxon.name}}</strong></h2>
+
+  {% if taxon %}
+		<div align=center>
+		{% for img in images %}
+			{% if img.taxon == taxon %}
+				<a href="{{img.image.url}}"><img height=50 alt='' class="rounded float-center" src='{{img.image.url}}'></a>
+			{% endif %}
+		{% endfor %}
+		{% endif %}
+		</div>
+
+<h3 align='center' class='display-7'>Определяемый ранг - {{tax_name}}</h3>
+<hr>
+
+<p><a href="{% url 'definer:definer_starter' %}"><button style="margin: 10px" class='back_btn' name='submit'>В начало</button></a></p>
+
+{% if card %}
+<div class='card_div'>
+		Номер: {{card.id}}
+		{% if card.division %}
+		 | Отдел: <a href="{% url 'definer:taxons_observation' card.division card.id %}"><b>{{card.division}}</b></a>
+		{% endif %}
+		{% if card.moss_class %}
+		 | Класс: <a href="{% url 'definer:taxons_observation' card.moss_class card.id %}"><b>{{card.moss_class}}</b></a>
+		 {% endif %}
+		{% if card.subclass %}
+		 | Подкласс: <a href="{% url 'definer:taxons_observation' card.subclass card.id %}"><b>{{card.subclass}}</b></a>
+		{% endif %}
+		{% if card.order %}
+		 | Порядок: <a href="{% url 'definer:taxons_observation' card.order card.id %}"><b>{{card.order}}</b></a>
+		{% endif %}
+		{% if card.family %}
+		 | Семейство: <a href="{% url 'definer:taxons_observation' card.family card.id %}"><b>{{card.family}}</b></a>
+		{% endif %}
+		{% if card.genus %}
+		 | Род: <a href="{% url 'definer:taxons_observation' card.genus card.id %}"><b>{{card.genus}}</b></a>
+		{% endif %}
+		{% if card.species %}
+		 | Вид: <a href="{% url 'definer:taxons_observation' card.species card.id %}"><b>{{card.species}}</b></a>
+		{% endif %}	
+		 | Состояние: <b>{{card.activation}}</b>
+<p>
+		 <form action="{% url 'definer:activation_in_unitaxon' taxon.name card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+			<button style="background: #00FEAD; color: #1686ab; width: 180px; " class='btn change_act' name='submit'>{{act_button}}</button>
+		</form>
+
+		<form action="{% url 'definer:card_freezing' taxon.name card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+			<button style='background: #00EBFE; width:150px;' class='btn third' name='submit'>{{button_name}}</button>
+		</form>
+</p>
+</div>
+<br>
+{% endif %}
+
+{% if freezing_card %}
+{% for freezing_card in freezing_card %}
+<div class='card_div' style='background: #cdfafa'>
+		Номер: {{freezing_card.id}}
+		 {% if freezing_card.division %}
+		 | Отдел: <a href="{% url 'definer:taxons_observation' freezing_card.division freezing_card.id %}"><b>{{freezing_card.division}}</b></a>
+		{% endif %}
+		{% if freezing_card.moss_class %}
+		 | Класс: <a href="{% url 'definer:taxons_observation' freezing_card.moss_class freezing_card.id %}"><b>{{freezing_card.moss_class}}</b></a>
+		 {% endif %}
+		{% if freezing_card.subclass %}
+		 | Подкласс: <a href="{% url 'definer:taxons_observation' freezing_card.subclass freezing_card.id %}"><b>{{freezing_card.subclass}}</b></a>
+		{% endif %}
+		{% if freezing_card.order %}
+		 | Порядок: <a href="{% url 'definer:taxons_observation' freezing_card.order freezing_card.id %}"><b>{{freezing_card.order}}</b></a>
+		{% endif %}
+		{% if freezing_card.family %}
+		 | Семейство: <a href="{% url 'definer:taxons_observation' freezing_card.family freezing_card.id %}"><b>{{freezing_card.family}}</b></a>
+		{% endif %}
+		{% if freezing_card.genus %}
+		 | Род: <a href="{% url 'definer:taxons_observation' freezing_card.genus freezing_card.id %}"><b>{{card.genus}}</b></a>
+		{% endif %}
+		{% if freezing_card.species %}
+		 | Вид: <a href="{% url 'definer:taxons_observation' freezing_card.species freezing_card.id %}"><b>{{freezing_card.species}}</b></a>
+		{% endif %}	
+		 | Состояние: <b>{{freezing_card.activation}}</b>
+	<p>
+
+		 <form action="{% url 'definer:activation_in_unitaxon' taxon.name freezing_card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+			<button style="background: #00FEAD; color: #1686ab; width: 180px; " class='btn change_act' name='submit'>{{freez_act_button}}</button>
+		</form>
+		<form action="{% url 'definer:card_freezing' taxon.name freezing_card.id %}" method='post' style="display:inline-block;">
+			{% csrf_token %}
+			{% if freezing_card.activation == 'Frozen' %}
+			<button style='background: #00EBFE; width:150px;' class='btn third' name='submit'>{{freez_button_name}}</button>
+			{% endif %}
+			{% if freezing_card.activation == 'Act' %}
+			<button style="width:150px" class='btn first' name='submit'>{{button_name}}{% if freezing_card.activation == 'Deact' %}{{button_name}}{% endif %}</button>
+			{% endif %}
+		</form>
+</p>
+<!--		<button style="width:150px" class='btn third' name='submit'>{% if freezing_card.activation == 'Frozen' %}{{freez_button_name}}{% endif %}{% if freezing_card.activation == 'Act' %}{{button_name}}{% endif %}{% if freezing_card.activation == 'Deact' %}{{button_name}}{% endif %}</button>
+	-->
+</div>
+<br>
+{% endfor %}
+{% endif %}
+<div class='list-group'>
+  {% if taxon %}
+		{% if taxon_bounds %}
+		{% for taxon in taxon_bounds %}
+		<div style="border: 2px solid #eae8ed; background-color: #f6fcae; border-radius: 6px">
+			<p style='text-align: center; height: 155px; padding: 10px;'> <!--cfffd0-->
+			{% for photo in tax_images %}
+			{% if photo.taxon == taxon %}
+				<a href="{{photo.image.url}}"><img height=150 alt='' class="rounded float-center" src='{{photo.image.url}}'></a>
+			{% else %}
+			{% endif %}
+
+			{% endfor %}
+			</p>
+
+		<a style='background-color: #b6fcb8;' href="{% url 'definer:definer_unitaxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
+
+			<div class="d-flex w-100 justify-content-between"></div>
+				
+			<div align=center><p><small>{{taxon.tax}}</small></p>
+			 <h5 class="mb-3">{{taxon.name}}</h5>
+			</div>
+			 <div class="d-flex w-100 justify-content-between">
+			 <p class="mb-3">{{taxon.definer_description}}</p>
+			</div>
+		</a>
+		</div>
+		<br>
+		{% endfor %}
+		{% endif %}
+
+
+  {% endif %}
+
+</div>
+{% endblock %}

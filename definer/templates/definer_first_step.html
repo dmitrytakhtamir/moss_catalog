@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="{% url 'definer:definer_first_step' %}" method='post'>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type='submit'>Определить</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+<h3 align='center' class='display-4'>Добавить вид</h3>
+
+<form action="{% url 'definer:add_definer' %}" method='post' enctype="multipart/form-data">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+
+	{% buttons %}
+		<button name='submit' class='btn btn-primary'>Создать новый определитель</button>
+		<button onclick="{% url 'definer:add_definer'%}">edit</button>
+	{% endbuttons %}
+
+</form>
+<input type="submit" value="Edit Due Date" name="test_butt" />
+
+	<div align='center'><button type="button" class="btn btn-info btn-lg" name='edition_button'>Редактирование</button></a></div>
+
+<form action="{% url 'definer:add_definer' %}" method='get'>
+	<input type='submit' name='test'>
+</form>
+
+{% endblock %}
