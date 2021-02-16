@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<form action="{% url 'taxons:edition' taxon.name %}" method='post' enctype='multipart/form-data'>
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	{{ form.errors }}
+	{{ form.non_field_errors }}
+	<button class='btn btn-primary' name='submit'>Сохранить изменения</button>
+</form>
+
+{% endblock %}

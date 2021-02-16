@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p>Do you really want to delete {{taxon.name}}?</p>
+<form method='POST'>
+	{% csrf_token %}
+	<a href="{% url 'home' %}">Отмена</a>
+
+	<button class='btn btn-danger' name='submit'>Подтвердить удаление</button>
+</form>
+
+{% endblock %}

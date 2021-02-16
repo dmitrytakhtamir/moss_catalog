@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+<form action="{% url 'taxons:multiple_images_species' species.id %}" method='post' enctype="multipart/form-data">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button name='submit'>Добавить изображения</button>
+</form>
+
+{% endblock %}

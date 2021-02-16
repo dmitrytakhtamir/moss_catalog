@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action='{% url 'taxons:edit_sp' species.id %}' method='post' enctype='multipart/form-data'>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button name='submit'>apply changes</button>
+</form>
+
+{% endblock %}

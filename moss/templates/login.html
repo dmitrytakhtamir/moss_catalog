@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method='post' action=''>
+    {% csrf_token %}
+    <input type='text' name='username' placeholder='Введите Ваш логин' class='form-control-sm'>
+    <input type='text' name='password' placeholder='Введите Ваш пароль' class='form-control-sm'>
+    	<button name='submit'>Войти</button>
+    <p>
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    </p>
+</form>
+
+{% endblock %}

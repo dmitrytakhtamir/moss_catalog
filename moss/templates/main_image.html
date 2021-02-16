@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+<form action="{% url 'taxons:main_image' taxon.name %}" method='post' enctype='multipart/form-data'>
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<button class='btn btn-primary' name='submit'>Назначить главным фото</button>
+</form>
+<br>
+{% for i in images %}
+<img height=150 src="{{i.image.url}}">
+{% endfor %}
+
+{% endblock %}

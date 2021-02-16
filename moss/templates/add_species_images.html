@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'taxons:add_species_images' species.id %}" method='post' enctype='multipart/form-data'>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button name='submit'>Добавить</button>
+</form>
+
+{% endblock %}

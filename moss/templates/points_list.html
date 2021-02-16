@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+{% for point in points %}
+	<a href="{% url 'point_page' point.id %}">
+		<h3>{{point.name}}</h3>
+		{% if point.image %}
+			<img class="rounded float" height=250 src='{{point.image.url}}'>
+		{% else %}
+			<p></p>
+		{% endif %}
+		<p>{{point.lat}}</p>
+		<p>{{point.lon}}</p>
+		<p>{{point.comment}}</p>
+	</a>
+{% endfor%}
+
+{% endblock %}

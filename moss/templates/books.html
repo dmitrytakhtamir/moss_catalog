@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block header %} {% endblock header %}
+{% block content %}
+
+{% if all_books %}
+	{% for book_obj in all_books %}
+		<p><a href="{% url 'taxons:book' book_obj.id %}">{{book_obj.title}}</a>
+		(<small>количество скачиваний - {{book_obj.counter}}</small>)</p>
+	{% endfor %}
+{% else %}
+	<p>Sorry, no books added yet</p>
+{% endif %}
+{% endblock %}

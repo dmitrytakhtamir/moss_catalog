@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<h3>{{point.name}}</h3>
+{% if point.image %}
+	<img class="rounded float" height=350 src='{{point.image.url}}'/>
+{% else %}
+	<p></p>
+{% endif %}
+<p>{{point.lat}}</p>
+<p>{{point.lon}}</p>
+<p>{{point.comment}}</p>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block header %} {% endblock header %}
+{% block content %}
+
+
+<div class="list-group">
+	{% if subclass_list %}
+			{% for sub in subclass_list %}
+				  <a href="{% url 'taxons:universal_taxon' sub.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
+				  	{% if sub.img %}
+				  	<img height=100 alt='' src='{{sub.img.url}}'>
+				  	{% endif %}
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-3">{{sub.name}}</h5>
+				      <small>{{sub.date}}</small>
+				    </div>
+				    <p class="mb-3">{{sub.description}}</p>
+				  </a>
+		{% endfor %}
+	{% endif %}
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div>
+	{% if taxon %}
+	<h3>{{taxon.name}}</h3>
+	<small>Таксон: <strong>{{taxon.tax}}</strong></small>
+	<small>Родительский таксон: <strong>{{taxon.parent_taxon}}</strong></small><br><br>
+	<p class="univers_tax" >{{taxon.description}}</p>
+
+<div class="archive">
+
+  <article>
+  	{% if taxon.img %}
+		<a href="{{taxon.img.url}}"><img class="rounded float" height=200 src='{{taxon.img.url}}'></a>
+	{% endif %}
+  	{% for img in images %}
+		{% if img.image %}
+		{% if img.image == taxon.img %}
+
+		{% else %}
+				<a href="{{img.image.url}}"><img class="rounded float" height=170 src='{{img.image.url}}'></a>
+		{% endif %}		 
+		{% endif %}
+	{% endfor %}
+</article>
+
+</div>
+
+
+	<hr>
+
+	<div class="buttons_group">
+		<a  href="{% url 'taxons:edition' taxon.name %}"><button class="main_button" name='submit'>Редактирование</button></a>
+		<a  href="{% url 'taxons:main_image' taxon.name %}"><button class="main_button" name='submit'>Выбрать главное фото</button></a>
+		<a  href="{% url 'taxons:multiple_images' taxon.name %}"><button class="main_button" name='submit'>Добавить еще фотографии</button></a>
+		<a href="#zatemnenie"><button type="button" class="main_button" style="display:inline-block;" name='submit'>Удалить карточку</button></a>
+		<div id="zatemnenie">
+		   <window>
+		   		Вы действительно желаете удалить этот таксон?
+		   	  <p>
+		       <form action="{% url 'taxons:delete_taxon' taxon.name %}" method='post' style="display:inline-block;">
+					{% csrf_token %}
+				<button class='form_del_button' name='submit'>Удалить</button>
+				</form>
+		    	<a href="{% url 'taxons:universal_taxon' taxon.name %}"><button type="button" class="cancel_button" style="display:inline-block;" name='submit'>Отмена</button></a>
+			  </p>
+			  <br>
+		   </window>
+		</div>
+	</div>
+	{% endif %}
+
+</div>
+
+{% endblock %}

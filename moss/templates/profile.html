@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class='jumbotron'>
+	<h3>{{user.username}}</h3>
+	<p><small>Имя пользователя:</small>
+	{{user_custom.name}}</p>
+	<p><small>Email:</small>
+	{{user.email}}</p>
+	{% if user_custom.picture %}
+	<p><a href='{{user_custom.picture.url}}'><img class="rounded float" height=150 src='{{user_custom.picture.url}}'></a></p>
+	{% endif %}
+	<p><button type="button" class="btn btn-outline-secondary btn-sm"><a href="{% url 'edit_profile' %}">edit profile</a></button></p>
+	<hr>
+
+	{% if added_entry %}
+    <div class="dropdown">
+	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Добавленные Вами мхи
+	  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <ul class='list-group'>
+    {% for taxons in added_entry %}
+    {% for tax in taxons %}
+      <li class='list-group-item'><p>
+      	<a class="dropdown-item" href="{% url 'taxons:universal_taxon' tax.name %}">{% if tax.img %}<img height=50 src="{{tax.img.url}}">{% endif %}</a>
+      	<a href="{% url 'taxons:universal_taxon' tax.name %}">{{tax}}</a>
+      </p></li>
+    {% endfor %} 
+    {% endfor %}
+    </ul>
+{% endif %}
+  </div>
+</div>
+<br>
+<br>
+
+{% if points %}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Ваши наблюдения
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <ul class='list-group'>
+    {% for point in points %}
+      <li class='list-group-item'><p>
+      	<a class="dropdown-item" href="{% url 'point_page' point.id %}">
+      		{% if point.image %}
+      			<img height=50 src="{{point.image.url}}">
+      		{% else %}
+      			<p></p>
+      		{% endif %}
+      		</a>
+      	<a href='{% url 'point_page' point.id %}'>{{point.name}}</a>
+      </p></li>
+     
+    {% endfor %}
+    </ul>
+{% endif %}
+
+  </div>
+</div>
+</div>
+
+{% endblock %}

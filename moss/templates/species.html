@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3>{{species.name}}</h3>
+<p>{{species.description}}</p>
+{% if species.img %}
+	<a href="{{species.img.url}}"><img class="rounded float" height=350 src='{{species.img.url}}'></a>
+{% else %}
+	<p></p>
+{% endif %}
+
+<table align='right'>
+{% for photo in photos %}
+	{% if photo.image %}
+
+			  <tr>
+			  <td><a href="{{photo.image.url}}"><img class="rounded float-right" height=170 src='{{photo.image.url}}'></a></td></tr>
+			 
+	{% endif %}
+{% endfor %}
+</table>
+
+<hr>
+<ul class="list-group list-group-horizontal-lg">
+  <li class="list-group-item"><a href="{% url 'taxons:edit_sp' species.id %}">edit data</a></li>
+  <li class="list-group-item"><a href="{% url 'taxons:add_species_images' species.id %}">Добавить ещё фотографии</a></li>
+  <li class="list-group-item"><a href="{% url 'taxons:multiple_images_species' species.id %}">Добавить ещё фотографии</a></li>
+  <li class="list-group-item"><a href="{% url 'taxons:delete_sp' species.id %}">delete</a></li>
+</ul>
+
+{% endblock %}

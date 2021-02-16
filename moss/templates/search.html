@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<p>Точный поиск</p>
+<form method='get'>
+	{{myFilter.form}}
+	<button name='submit' class='btn btn-primary'>search</button>
+</form>
+<p></p>	
+<form class="form-inline my-2 my-lg-0" action="{% url 'search' %}">
+  <input class="form-control mr-sm-2" type="search" placeholder="Неточный поиск" aria-label="Search" name='inexact_search'>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<p></p>
+
+<div class="list-group">
+	{% if taxons %}
+		{% for taxons in taxons %}
+			{% for taxon in taxons %}
+				  <a href="{% url 'taxons:universal_taxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
+				  	{% if taxon.img %}
+				  	  <img height=100 src='{{taxon.img.url}}'>
+				  	{% endif %}
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-3">{{taxon.name}}</h5>
+				      <small>{{taxon.date}}</small>
+				    </div>
+				    <p class="mb-3">{{taxon.description}}</p>
+				    <small>Родительский таксон: 
+				    {% if taxon.parent_class %}
+				    {{taxon.parent_class}}</small>
+				    {% else %}
+				    Не назначен</small>
+				    {% endif %}
+				  </a>
+			{% endfor %}
+		{% endfor %}
+	{% else %}
+		<p>К сожалению, нет совпадений по Вашему запросу</p>
+	{% endif %}
+</div>
+
+
+{% endblock %}

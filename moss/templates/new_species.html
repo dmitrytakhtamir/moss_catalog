@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<h3 align='center' class='display-4'>Добавить вид</h3>
+
+<form action="{% url 'taxons:new_species' %}" method='post' class='form' enctype='multipart/form-data'>
+	{% csrf_token %}
+	{% bootstrap_form form %}
+
+	{% buttons %}
+	<button name='submit' class='btn btn-primary'>Create new species</button>
+	{% endbuttons %}
+</form>
+
+{% endblock %}

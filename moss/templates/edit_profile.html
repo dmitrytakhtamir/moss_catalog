@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<form action="{% url 'edit_profile' %}" method='post' enctype='multipart/form-data'>
+	{% csrf_token %}
+	
+	{% bootstrap_form form %}
+	{% buttons %}
+	<button name='submit' class='btn-primary btn'>accept changes</button>
+	{% endbuttons %}
+</form>
+
+{% endblock %}

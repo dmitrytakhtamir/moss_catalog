@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+
+<h3>{{subclass.name}}</h3>
+<p>{{subclass.description}}</p>
+{% if subclass.img %}
+	<a href="{{subclass.img.url}}"><img class="rounded float" height=350 src='{{subclass.img.url}}'></a>
+{% else %}
+	<p></p>
+{% endif %}
+
+<table align='right'>
+{% for image in images %}
+	{% if image.image %}
+
+			  <tr>
+			  <a href="{{image.image.url}}"><img class="rounded float-right" height=170 src='{{image.image.url}}'></a></tr>
+			 
+	{% endif %}
+{% endfor %}
+</table>
+
+<hr>
+<ul class="list-group list-group-horizontal-lg">
+  <li class="list-group-item"><a href="{% url 'taxons:edit_subclass' subclass.id %}">Изменить данные</a></li>
+  <li class='list-group-item'><a href="{% url 'taxons:main_image' subclass.id %}">Назначить главное изображение</a></li>
+</ul>
+{% endblock %}

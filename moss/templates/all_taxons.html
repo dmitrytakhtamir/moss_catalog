@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block header %} {% endblock header %}
+{% block content %}
+
+
+<div class="list-group">
+	{% if taxons %}
+		{% for taxons in taxons %}
+			{% for taxon in taxons %}
+			  <a href="{% url 'taxons:universal_taxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
+			  	<div>
+			  	{% if taxon.img %}
+			  	<div style='display: inline-block;'>
+			  	<img height=100 alt='' src='{{taxon.img.url}}'></div>
+			  	{% endif %}
+			  	<div style='display: inline-block; padding: 8px'><h3>{{taxon.name}}</h3></div>
+			  </div>
+			 	<br>
+			    <div class="d-flex w-100 justify-content-between">
+			    </div>
+			    <p class="mb-3">{{taxon.description}}</p>
+			    <small>Ранг: <strong>{{taxon.tax}}</strong></small>
+			    <small> <b>·</b> Родительский таксон: <strong>{{taxon.parent_taxon}}</strong></small>
+			  </a>
+			{% endfor %}
+		{% endfor %}
+	{% endif %}
+</div>
+
+{% endblock %}

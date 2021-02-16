@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block header %} {% endblock header %}
+{% block content %}
+
+<form action="{% url 'taxons:book_add' %}" method='post' enctype="multipart/form-data">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type='submit'>upload</button>
+</form>
+
+{% endblock %}

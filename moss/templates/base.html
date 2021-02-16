@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=endge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--<link href="{% static 'css/base_css.css'%}" rel='stylesheet' type='text/css'>
+    	<img height=25 src="{% static 'pilferum1b.jpg' %}"> - это для иконки вместо кнопки home -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+		@import url("https://fonts.googleapis.com/css?family=Montserrat:700,900&subset=cyrillic");
+		@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&subset=cyrillic');
+
+		@keyframes header_anim {
+		  from {
+		    transform: translateX(-120%);
+		  }
+		  to {
+		    transform: translateX(0);
+		  }
+		}
+    	.header {
+		  display: flex;
+		  min-height: 35vh;
+		  padding: 8px 50px;
+		  margin: 14px 0px 10px 0px;
+		  background-color: #defce8;
+		  background-image: url({% static 'pilferum1b.jpg' %});
+		  opacity: 0.75;
+		  background-repeat: no-repeat;
+		  background-position: center center;
+		  background-size: cover;
+		  border-radius: 8px;
+		}
+    	.animated_image {
+		  transform: translateX(0);
+		  animation-name: header_anim;
+		  animation-duration: 2s;
+		  animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		  text-transform: uppercase;
+		  color: #fff;
+		  align-self: center;
+		  border: solid #ccc 0px;
+		  border-radius: 6px;
+		}
+
+		#zatemnenie:target {
+		display: block;
+		}
+
+		#zatemnenie {
+
+		background: rgba(102, 102, 102, 0.68);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: none;
+		z-index: 9999999999;
+		}
+
+		window {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 400px;
+		border: 1px solid #cecece;
+		padding: 50px;
+		transform: translate(-50%,-50%);
+		background-color: #fafafa;
+		}
+
+		div#main_text a.close_window {
+		position: right;
+		right: 10px;
+		top: 4px;
+		border: none;
+		}
+		.buttons_group
+		 {
+		    float: left;
+		    border: 0px solid #f0f2f2;
+		    border-radius: 6px;
+		    display: inline-block;
+		}
+		.btn-group .button:not(:last-child) {
+  			  border-right: none;
+  			  } /* Prevent double borders */
+		.main_button {
+			background: #f8f4ff;
+			size: auto;
+			color: #65c5fc;
+			-webkit-transition-duration: 0.4s; /* Safari */
+    		transition-duration: 0.4s;
+    		border: 0px solid  #f0f2f2; 
+    		border-radius: 6px;
+    		padding: 8px 8px;
+
+		}
+		.main_button:hover {
+		    background-color: #dcdfe0; 
+		    color: #0b6bb0;
+
+		}
+
+		.form_del_button {
+			background: #ED9696;
+			color: white;
+			width:130px;
+		}
+		.cancel_button {
+			background: #08e8de;
+			width:130px;
+		}
+
+		.container {
+		  width: 60%;
+		  margin: 2rem auto; 
+		}
+		 
+		.gallery {
+		  display: grid;
+		  grid-template-columns: repeat(8, 1fr);
+		  grid-template-rows: repeat(8, 5vw);
+		  grid-gap: 1.5rem; 
+		}
+		 
+		.gallery__img {
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover;
+		  display: block; 
+		}
+		 
+		.gallery__item--1 {
+		  grid-column-start: 1;
+		  grid-column-end: 3;
+		  grid-row-start: 1;
+		  grid-row-end: 3;
+		}
+		 
+		.archive {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+		  grid-gap: 132px;
+		  grid-auto-flow: dense;
+		}
+		.article:nth-child(1) {
+		  grid-column: span 2;
+		}
+
+				/* Dropdown Button */
+		.dropbtn {
+		    background-color: #f8f7fc;
+		    color: #767578;
+		    padding: 16px;
+		    font-size: 16px;
+		    border: 0px solid;
+		    border-radius: 6px;
+		}
+
+		/* The container <div> - needed to position the dropdown content */
+		.dropdown {
+		    position: relative;
+		    display: inline-block;
+		}
+
+		/* Dropdown Content (Hidden by Default) */
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: #fcfcfc;
+		    min-width: 160px;
+		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		    z-index: 1;
+		}
+
+		/* Links inside the dropdown */
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
+
+		/* Change color of dropdown links on hover */
+		.dropdown-content a:hover {background-color: #ddd;}
+
+		/* Show the dropdown menu on hover */
+		.dropdown:hover .dropdown-content {display: block;}
+
+		/* Change the background color of the dropdown button when the dropdown content is shown */
+		.dropdown:hover .dropbtn {background-color: #eeedf2; color: #444345;}
+
+		.change_img_button  {
+			background-color: #fcd2f8;
+			color: #3789c4;
+			border: solid 0px;
+			height: 40px;
+			border-radius: 8px;
+		}
+
+		.change_img_button:hover {
+			background-color: #f7c1f2;
+			color: #0b588f;
+		}
+
+		.first {
+		  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+		  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+		}
+		.first:hover {
+		  box-shadow: 0 0 40px 40px red inset;
+		}
+
+		.fifth {
+		  border-color: #8e44ad;
+		  border-radius: 0;
+		  color: #8e44ad;
+		  position: relative;
+		  overflow: hidden;
+		  z-index: 1;
+		  -webkit-transition: color 150ms ease-in-out;
+		  transition: color 150ms ease-in-out;
+		}
+		.fifth:after {
+		  content: '';
+		  position: absolute;
+		  display: block;
+		  top: 0;
+		  left: 50%;
+		  -webkit-transform: translateX(-50%);
+		          transform: translateX(-50%);
+		  width: 0;
+		  height: 100%;
+		  background: #8e44ad;
+		  z-index: -1;
+		  -webkit-transition: width 150ms ease-in-out;
+		  transition: width 150ms ease-in-out;
+		}
+		.fifth:hover {
+		  color: #fff;
+		}
+		.fifth:hover:after {
+		  width: 110%;
+		}
+
+		}
+		.third {
+		  border-color: #3498db;
+		  color: #736f7f;
+		  background: #00EBFE; 
+		  width:150px;
+		  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+		  -webkit-transition: all 150ms ease-in-out;
+		  transition: all 150ms ease-in-out;
+		}
+		.third:hover {
+		  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+		  border-color: #3498db;
+
+		}
+
+		.change_act {
+		  border-color: #3498db;
+		  color: #fff;
+		  box-shadow: 0 0 40px 40px #49f599 inset, 0 0 0 0 #49f599;
+		  -webkit-transition: all 150ms ease-in-out;
+		  transition: all 150ms ease-in-out;
+		}
+		.change_act:hover {
+		  box-shadow: 0 0 10px 0 #49f599 inset, 0 0 10px 4px #49f599;
+		}
+
+		.img_change {
+		  border-radius: 3em;
+		  border-color: #1abc9c;
+		  color: #fae6f8;
+		  font-weight: bold;
+		  height: 40px;
+		  background-image: -webkit-linear-gradient(left, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+		  background-image: linear-gradient(to right, rgba(26, 188, 156, 0.6), rgba(26, 188, 156, 0.6) 5%, #1abc9c 5%, #1abc9c 10%, rgba(26, 188, 156, 0.6) 10%, rgba(26, 188, 156, 0.6) 15%, #1abc9c 15%, #1abc9c 20%, rgba(26, 188, 156, 0.6) 20%, rgba(26, 188, 156, 0.6) 25%, #1abc9c 25%, #1abc9c 30%, rgba(26, 188, 156, 0.6) 30%, rgba(26, 188, 156, 0.6) 35%, #1abc9c 35%, #1abc9c 40%, rgba(26, 188, 156, 0.6) 40%, rgba(26, 188, 156, 0.6) 45%, #1abc9c 45%, #1abc9c 50%, rgba(26, 188, 156, 0.6) 50%, rgba(26, 188, 156, 0.6) 55%, #1abc9c 55%, #1abc9c 60%, rgba(26, 188, 156, 0.6) 60%, rgba(26, 188, 156, 0.6) 65%, #1abc9c 65%, #1abc9c 70%, rgba(26, 188, 156, 0.6) 70%, rgba(26, 188, 156, 0.6) 75%, #1abc9c 75%, #1abc9c 80%, rgba(26, 188, 156, 0.6) 80%, rgba(26, 188, 156, 0.6) 85%, #1abc9c 85%, #1abc9c 90%, rgba(26, 188, 156, 0.6) 90%, rgba(26, 188, 156, 0.6) 95%, #1abc9c 95%, #1abc9c 100%);
+		  background-position: 0 0;
+		  background-size: 100%;
+		  -webkit-transition: background 300ms ease-in-out;
+		  transition: background 300ms ease-in-out;
+		}
+		.img_change:hover {
+		  background-position: 100px;
+		}
+
+	.back_btn {
+	  border-color: #8ac0f2;
+	  color: #fff;
+	  background: #1ad5ed;
+	  border-radius: 6px;
+	  height: 35px;
+	  width: 100px;
+	  background-image: -webkit-linear-gradient(45deg, #90e9f5 50%, transparent 50%);
+	  background-image: linear-gradient(45deg, #90e9f5 50%, transparent 50%);
+	  background-position: 100%;
+	  background-size: 400%;
+	  -webkit-transition: background 300ms ease-in-out;
+	  transition: background 300ms ease-in-out;
+	}
+	.back_btn:hover {
+	  background-position: 0;
+	  border-color: #f0cd4f;
+	  color: #7d80d4;
+	}
+	.new_card_btn {
+	  height: 40px;
+	  border-color: #fae3f8;
+	  border-radius: 0;
+	  color: #8e44ad;
+	  position: relative;
+	  overflow: hidden;
+	  z-index: 1;
+	  -webkit-transition: color 150ms ease-in-out;
+	  transition: color 150ms ease-in-out;
+	  background-color: transparent;
+	  background: #fadef7;
+	  border-radius: 6px;
+	}
+	.new_card_btn:after {
+	  content: '';
+	  position: absolute;
+	  display: block;
+	  top: 0;
+	  left: 50%;
+	  -webkit-transform: translateX(-50%);
+	          transform: translateX(-50%);
+	  width: 0;
+	  height: 100%;
+	  background: #f7bcf1;
+	  z-index: -1;
+	  -webkit-transition: width 150ms ease-in-out;
+	  transition: width 150ms ease-in-out;
+
+
+	}
+	.new_card_btn:hover {
+	  color: #431cad;
+	  border-color: #fabef4;
+	}
+	.new_card_btn:hover:after {
+	  width: 110%;
+	}
+
+	.card_div {
+		 border: 2px solid #eae8ed; 
+		 border-radius: 6px; 
+		 background: #f8f4ff; 
+		 padding: 5px; 
+		 color: #736f7f;'
+	}
+    </style>
+
+
+    <title>Moss catalogizator</title>
+
+    <!--установка иконки во вкладке-->
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+    <body>
+        <nav class='navbar navbar-expand-lg navbar-light bg-light' style="background-color: #f8f7fc">
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a style='color: rgb(120, 210, 180); margin: 9px' class="nav-link" href="{% url 'home' %}"><strong>Home</strong><span class="sr-only">(current)</span></a>
+		      </li>
+    
+		      <li class="nav-item">
+		        <a style='margin: 9px' class="nav-link" href="{% url 'taxons:all_taxons' %}">Все таксоны</a>
+		      </li>
+		        <li class="nav-item dropdown">
+		         <div class="dropdown">
+				 	 <button class="dropbtn">Добавить</button>
+				  <div class="dropdown-content">
+				  	 <a class="dropdown-item" href="{% url 'taxons:new_taxon' %}">Таксон</a>
+		          <div class="dropdown-divider"></div>
+		          <a class="dropdown-item" href="{% url 'taxons:book_add' %}">Книгу</a>
+		        </div>
+		   		</div>
+		        </li>
+		        <li class="nav-item dropdown">
+		          <div class="dropdown">
+				 	 <button class="dropbtn">Посмотреть</button>
+				  <div class="dropdown-content">
+				    <a class="dropdown-item" href="{% url 'taxons:species_list' %}">Виды<b style="margin-left: 80px; backgroung">{{sp_span}}</b></a>
+				    <a class="dropdown-item" href="{% url 'taxons:genus_list' %}">Роды<b style="margin-left: 80px;">{{gen_span}}</b></a>
+				    <a class="dropdown-item" href="{% url 'taxons:family_list' %}">Семейства<b style="margin-left: 40px;">{{fam_span}}</b></a>
+				    <a class="dropdown-item" href="{% url 'taxons:order_list' %}">Порядки <b style="margin-left: 50px;">{{order_span}}</b></a>
+				    <a class="dropdown-item" href="{% url 'taxons:subclass_list' %}">Подклассы <b style="margin-left: 30px;">{{subclass_span}}</b></a>
+				    <a class="dropdown-item" href="{% url 'taxons:class_list' %}">Классы</a>
+				    <a class="dropdown-item" href="{% url 'taxons:division_list' %}">Отделы</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="{% url 'taxons:all_taxons' %}">Все таксоны</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="{% url 'taxons:books' %}">Книги</a>
+				  </div>
+				</div>
+			</li>
+			<li>
+				<div class="dropdown">
+				 	 <button class="dropbtn">Карта</button>
+				  <div class="dropdown-content">
+				  	<a class="dropdown-item" href="{% url 'to_map' %}">Карта</a>
+				  	<a class="dropdown-item" href="{% url 'points_list' %}">Все наблюдения</a>
+				  	 <div class="dropdown-divider"></div>
+				  	<a class="dropdown-item" href="{% url 'add_point' %}">Добавить наблюдение</a>
+				  </div>
+				 </div>
+				<div style='border-right: 4px solid black'></div>
+		      </li>
+		    		      {% if user.is_authenticated %}
+			      <li class='nav-item prof' >
+			      	<div>
+					<a style='margin-left: 100px; margin-top: 10px;' id='prof' class='nav-link' href="{% url 'profile_page' %}"><strong>{{user.username}}-profile</strong></a>
+				</div>
+				  </li>
+
+				  <li class='nav-item'>
+
+					<a style='margin: 9px' class='nav-link' href="{% url 'logout_page' %}">logout</a>
+				  </li>
+			   {% else %}
+			   	  <li class='nav-item'>
+					<a style='margin: 9px' class='nav-link' href="{% url 'login_page' %}">login</a>
+				  </li>
+				  <li class='nav-item'>
+					<a style='margin: 9px' class='nav-link' href="{% url 'register' %}">registration</a>
+				  </li>
+			   {% endif %}
+			   	  </ul>
+			<a style='color:gray;' class="nav-link" href="{% url 'search' %}">Расширенный поиск</a>
+		    <form class="form-inline my-2 my-lg-0" action="{% url 'base_settings' %}">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search'>
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		  </div>
+		</nav>
+		 
+           
+        
+  
+	<div class='container'>
+	  <div class='page-header'>
+	{% block header %} {% endblock header %}
+	  </div>
+	  <div>
+	  {% block content %} {% endblock %}
+	  </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    </body>
+</html>

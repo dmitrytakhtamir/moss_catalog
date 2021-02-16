@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="list-group">
+	{% if genus_list %}
+			{% for gen in genus_list %}
+				  <a href="{% url 'taxons:genus' gen.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+				  	{% if gen.img %}
+				  	<img height=100 alt='' src='{{gen.img.url}}'>
+				  	{% endif %}
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-3">{{gen.name}}</h5>
+				      <small>{{gen.date}}</small>
+				    </div>
+				    <p class="mb-3">{{gen.description}}</p>
+				    <small>Genus: {{gen.genus}}</small>
+				  </a>
+		{% endfor %}
+	{% endif %}
+</div>
+
+{% endblock %}
