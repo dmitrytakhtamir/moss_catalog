@@ -134,7 +134,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    'static/css', 'staticfiles',
+    'static/css',
     ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
