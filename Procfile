@@ -1,1 +1,1 @@
-web: guinicorn moss_catalog.wsgi --log-file -
+web: gunicorn moss_catalog.wsgi --log-file -
