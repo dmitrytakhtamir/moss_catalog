@@ -137,6 +137,8 @@ STATICFILES_DIRS = [
     'static/css', 'staticfiles',
     ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 BOOTSTRAP4 = {
 'include_jquery': True,
 }
