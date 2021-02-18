@@ -79,19 +79,19 @@
   {% if moss_list %}
 	{% for moss in moss_list %}
 		<div style="border: 2px solid #e4dede; border-radius: 6px">
-		<p style='height: 155px; padding: 10px;'>
+		<p style='text-align: center; height: 180px; padding: 10px; overflow: auto;'>
 		{% for photo in division_images %}
 			{% if photo.taxon == moss %}
-				<a href="{{photo.image.url}}"><img height=150 alt='' class="rounded float-left" src='{{photo.image.url}}'></a>
+				<a href="{{photo.image.url}}"><img alt='' class="rounded float-center" style="height: 150px; margin:2px;" src='{{photo.image.url}}'></a>
 
 			{% endif %}
 		{% endfor %}
 		</p>
 		
 		<a href="{% url 'definer:definer_unitaxon' moss.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
-			<div class="d-flex w-100 justify-content-between">
+			<div class="d-flex w-100 justify-content-between"></div>
+			<div align=center><p><small>{{taxon.tax}}</small></p>
 			 <h5 class="mb-3">{{moss.name}}</h5>
-			 <p>{{moss.tax.name}}</p>
 			</div>
 			 <div class="d-flex w-100 justify-content-between">
 			 <p class="mb-3">{{moss.definer_description}}</p>
