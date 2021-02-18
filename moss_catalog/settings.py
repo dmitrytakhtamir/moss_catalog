@@ -25,7 +25,7 @@ SECRET_KEY = 'qoa592cn=u$i^n4%h!t&lcyf$ighc(wxkyh87xtb(#dal9$^!='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['moss-catalog.herokuapp.com', 'localhost:8000']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,9 +45,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
