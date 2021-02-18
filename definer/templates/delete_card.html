@@ -4,7 +4,7 @@
 <p>Вы действительно хотите удалить эту карточку?</p>
 <form method='POST'>
 	{% csrf_token %}
-	<a href="{% url 'definer:definer_subclass' %}"><button type="button" class="btn btn-success">Отмена</button></a>
+	<a href="{% url 'definer:definer_starter' %}"><button type="button" class="btn btn-success">Отмена</button></a>
 
 	<button class='btn btn-danger' name='submit'>Подтвердить удаление</button>
 </form>
