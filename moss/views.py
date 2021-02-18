@@ -16,7 +16,7 @@ from .new_marker import new_marker
 from django.core.files.base import ContentFile
 from GPSPhoto import gpsphoto
 import os
-import base64
+from pathlib import Path
 from folium import IFrame
 from folium.plugins import FloatImage
 from .functions import *
@@ -507,8 +507,9 @@ def to_map(request):
 
 		folium.Marker(location=[point.lat, point.lon], popup = popup, tooltip=tooltip,
 			icon=folium.Icon(icon='cloud', color = 'green')).add_to(cluster)
-	map.save('C:/Pyenv/moss_catalog/moss/templates/map4.html')
-	return render(request, 'map4.html')
+	BASE_DIR = Path(__file__).resolve().parent.parent
+	map.save(os.path.join(BASE_DIR, 'map.html'))
+	return render(request, 'map.html')
 
 def add_point(request):
 	'''Добавить новое наблюдение на карту'''
