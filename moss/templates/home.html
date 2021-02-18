@@ -5,25 +5,17 @@
 {% block header %}
 
 <h3 style="text-align:center; margin: 5px">Moss catalogisator</h3>
-<!--<div class='header'>
-	{% for sp in species %}
-		{% if sp.img %}
-			<a class='animated_image' href="{% url 'taxons:universal_taxon' sp.name %}">
-				<img height=100 title={{sp.name}} src='{{sp.img.url}}'>
-			</a>
-			&nbsp
-		{% endif %} 
-	{% endfor %}
-</div>-->
-
 <div class='header'>
 	{% for img in images_store %}
+			{% if img.img %}
 			<a class='animated_image' href="{% url 'taxons:universal_taxon' img.name %}">
 				<img style='border: solid 0px; border-radius: 6px; height: 100px' title={{img.name}} src='{{img.img.url}}'>
 			</a>
 			&nbsp
+			{% endif %}
 	{% endfor %}
 </div>
+
 
 
 {% endblock header %}
