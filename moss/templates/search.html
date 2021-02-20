@@ -37,7 +37,9 @@
 			{% endfor %}
 		{% endfor %}
 	{% else %}
-		<p>К сожалению, нет совпадений по Вашему запросу</p>
+		<b align='center'>{{bad_request}}
+			<br><br>
+			<p><img height=200 width=200 src="{% static 'sad_smile.png' %}"></p></b>
 	{% endif %}
 </div>
 
