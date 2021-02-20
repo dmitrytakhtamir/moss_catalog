@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-{% block header %} {% endblock header %}
 {% block content %}
 
 <div class="list-group">
 	{% if taxons_list %}
-			{% for taxon in taxons_list %}
+		{% for taxons in taxons_list %}
+			{% for taxon in taxons %}
 			  <a href="{% url 'taxons:universal_taxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
 			  	<div>
 			  		<div style='display: inline-block;'>
@@ -24,10 +24,9 @@
 			    <small>Родительский таксон: <strong>{{taxon.parent_taxon}}</strong></small>
 			  </a>
 			{% endfor %}
+		{% endfor %}
 
 	{% endif %}
 </div>
-
-
 
 {% endblock %}
