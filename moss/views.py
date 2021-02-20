@@ -571,12 +571,9 @@ def add_point(request):
 
 def points_list(request):
 	'''Список наблюдений'''
-	user = request.user
-
 	points = TaxonOnMap.objects.all()
-	points2 = TaxonOnMap.objects.filter(creator=user)
 
-	context = {'points': points, 'points2': points2, 'user': user}
+	context = {'points': points}
 	return render(request, 'points_list.html', context)
 
 def point_page(request, point_id):
