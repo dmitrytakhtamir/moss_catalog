@@ -110,28 +110,26 @@ def base(request):
 	return render(request, 'base.html', context)
 
 def base_settings(request):
-	taxons_list = [Class, Subclass, Order, Family, Genus, Species]
+	taxons = (Division, Class, Subclass, Order, Family, Genus, Species)
 	search_query = request.GET.get('search', '')
-	all_taxons_list = []
-	taxons2 = []
-	taxons = []
-	user = request.user
+	taxons_list = []
 
 	if search_query:
-		for taxon in taxons_list:
+		for taxon in taxons:
 			search = taxon.objects.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
 			if search:
-				taxons.append(search)
+				taxons_list.append(search)
 	else:
-		for taxon in taxons_list:
+		for taxon in taxons:
 				tax = taxon.objects.all()
 				if len(tax) > 0:
-					taxons.append(tax)
+					taxons_list.append(tax)
 				else:
 					pass
 
-	context = {'search_query': search_query, 'all_taxons_list': all_taxons_list, 'taxons': taxons,'user': user}
+	context = {'search_query': search_query, 'taxons_list': taxons_list}
 	return render(request, 'taxons_list.html', context)
+
 
 #универсальная функция для обработки объекта любой модели
 def universal_taxon(request, name):
