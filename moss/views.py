@@ -37,8 +37,13 @@ def home(request):
 	fam_span = len(Family.objects.all())
 	order_span = len(Order.objects.all())
 	subclass_span = len(Subclass.objects.all())
+	division_span = len(Division.objects.all())
 	books_span = len(Book.objects.all())
 	points_span = len(TaxonOnMap.objects.all())
+	taxons_list = (Division, Class, Subclass, Order, Family, Genus, Species)
+	all_tax_span = 0
+	for taxon in taxons_list:
+		all_tax_span += len(taxon.objects.all())
 
 	definer = request.GET.get('definer_reverse', '')
 	if definer:
@@ -55,7 +60,7 @@ def home(request):
 	context = {'species': species, 'all_obj': all_obj, 'books': books, 
 				'myFilter': myFilter, 'sp_span': sp_span, 'gen_span': gen_span, 'books_span': books_span,
 			'points_span': points_span, 'subclass_span': subclass_span, 'images_store': images_store, 
-			'fam_span': fam_span, 'order_span': order_span}
+			'fam_span': fam_span, 'order_span': order_span, 'class_span': class_span, 'division_span': division_span,'all_tax_span': all_tax_span}
 	return render(request, 'home.html', context)
 
 def homepage_images(request):
@@ -113,6 +118,7 @@ def base_settings(request):
 	taxons = (Division, Class, Subclass, Order, Family, Genus, Species)
 	search_query = request.GET.get('search', '')
 	taxons_list = []
+	bad_request = 'К сожалению, по Вашему запросу ничего не найдено. Проверьте запрос.'
 
 	if search_query:
 		for taxon in taxons:
@@ -127,7 +133,7 @@ def base_settings(request):
 				else:
 					pass
 
-	context = {'search_query': search_query, 'taxons_list': taxons_list}
+	context = {'search_query': search_query, 'taxons_list': taxons_list, 'bad_request': bad_request}
 	return render(request, 'taxons_list.html', context)
 
 
@@ -441,26 +447,26 @@ def logout_page(request):
 
 def search(request):
 	'''Поиск среди всех записей растений. Реализован неточный поиск - ищущий все совпадения введенных сиволов в названиях и описаниях растений, и точный - ищущий лишь точные совпадения'''
-	species = Species.objects.order_by('name')
-	all_obj = Species.objects.all()
 	myFilter = OrderFilter(request.GET)
 	taxons = []
+	bad_request = 'К сожалению, по Вашему запросу ничего не найдено. Проверьте запрос.'
 
-	taxons_tuple = (Class, Subclass, Order, Family, Genus, Species)
+	taxons_list = (Division, Class, Subclass, Order, Family, Genus, Species)
 	search_query = request.GET.get('inexact_search', '')
 	if search_query:
-		for taxon in taxons_tuple:
-			sp_search = taxon.objects.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
-			taxons.append(sp_search)
+		for taxon in taxons_list:
+			search = taxon.objects.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+			taxons.append(search)
 	elif myFilter:
 		species = []
-		for taxon in taxons_tuple:
+		for taxon in taxons_list:
 			myFilter = OrderFilter(request.GET, queryset=taxon.objects.order_by('name'))
 			taxons.append(myFilter.qs)
 	else:
 		pass
 
-	context = {'taxons': taxons, 'all_obj': all_obj, 'myFilter': myFilter}
+	context = {'taxons': taxons, 'myFilter': myFilter, 'bad_request': bad_request}
+
 
 	return render(request, 'search.html', context)
 
