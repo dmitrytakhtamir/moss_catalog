@@ -37,6 +37,7 @@ def home(request):
 	fam_span = len(Family.objects.all())
 	order_span = len(Order.objects.all())
 	subclass_span = len(Subclass.objects.all())
+	class_span = len(Class.objects.all())
 	division_span = len(Division.objects.all())
 	books_span = len(Book.objects.all())
 	points_span = len(TaxonOnMap.objects.all())
