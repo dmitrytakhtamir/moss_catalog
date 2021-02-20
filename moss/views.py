@@ -513,8 +513,8 @@ def to_map(request):
 		folium.Marker(location=[point.lat, point.lon], popup = popup, tooltip=tooltip,
 			icon=folium.Icon(icon='cloud', color = 'green')).add_to(cluster)
 	BASE_DIR = Path(__file__).resolve().parent.parent
-	map.save(os.path.join(BASE_DIR, 'map4.html'))
-	return render(request, 'map4.html')
+	map.save(os.path.join(BASE_DIR, 'map.html'))
+	return render(request, 'map.html')
 
 def add_point(request):
 	'''Добавить новое наблюдение на карту'''
