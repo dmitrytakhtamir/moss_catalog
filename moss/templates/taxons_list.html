@@ -25,7 +25,10 @@
 			  </a>
 			{% endfor %}
 		{% endfor %}
-
+	{% else %}
+		<b align='center'>{{bad_request}}
+			<br><br>
+			<p><img height=200 width=200 src="{% static 'sad_smile.png' %}"></p></b>
 	{% endif %}
 </div>
 
