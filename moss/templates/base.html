@@ -358,6 +358,18 @@
 		 padding: 5px; 
 		 color: #736f7f;'
 	}
+	    
+	   .span {
+		text-align: center; 
+		display: inline-block; 
+		border: solid 1px #e1e5e5; 
+		border-radius: 20px; 
+		width: 30px;
+		background: #e1e5e5;
+		position: relative;
+		float: right;
+
+	}
     </style>
 
 
@@ -392,17 +404,17 @@
 		          <div class="dropdown">
 				 	 <button class="dropbtn">Посмотреть</button>
 				  <div class="dropdown-content">
-				    <a class="dropdown-item" href="{% url 'taxons:species_list' %}">Виды<b style="margin-left: 80px; backgroung">{{sp_span}}</b></a>
-				    <a class="dropdown-item" href="{% url 'taxons:genus_list' %}">Роды<b style="margin-left: 80px;">{{gen_span}}</b></a>
-				    <a class="dropdown-item" href="{% url 'taxons:family_list' %}">Семейства<b style="margin-left: 40px;">{{fam_span}}</b></a>
-				    <a class="dropdown-item" href="{% url 'taxons:order_list' %}">Порядки <b style="margin-left: 50px;">{{order_span}}</b></a>
-				    <a class="dropdown-item" href="{% url 'taxons:subclass_list' %}">Подклассы <b style="margin-left: 30px;">{{subclass_span}}</b></a>
-				    <a class="dropdown-item" href="{% url 'taxons:class_list' %}">Классы</a>
-				    <a class="dropdown-item" href="{% url 'taxons:division_list' %}">Отделы</a>
+				    <a class="dropdown-item" href="{% url 'taxons:species_list' %}">Виды <div class='span'>{{sp_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:genus_list' %}">Роды <div class='span'>{{gen_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:family_list' %}">Семейства<div class='span'>{{fam_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:order_list' %}">Порядки<div class='span'>{{order_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:subclass_list' %}">Подклассы <div class='span'>{{subclass_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:class_list' %}">Классы <div class='span'>{{class_span}}</div></a>
+				    <a class="dropdown-item" href="{% url 'taxons:division_list' %}">Отделы <div class='span'>{{division_span}}</div></a>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="{% url 'taxons:all_taxons' %}">Все таксоны</a>
+				    <a class="dropdown-item" href="{% url 'taxons:all_taxons' %}">Все таксоны <div class='span'>{{all_tax_span}}</div></a>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="{% url 'taxons:books' %}">Книги</a>
+				    <a class="dropdown-item" href="{% url 'taxons:books' %}">Книги <div class='span'>{{books_span}}</div></a>
 				  </div>
 				</div>
 			</li>
