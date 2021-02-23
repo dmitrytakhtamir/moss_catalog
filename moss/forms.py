@@ -71,24 +71,12 @@ class SearchForm(ModelForm):
 class UploadFileForm(ModelForm):
 	class Meta:
 		model = Book
-		fields = '__all__'
+		fields = ['title', 'file']
 
 class AddMossPoint(forms.ModelForm):
 	class Meta:
 		model = TaxonOnMap
 		fields = ['name', 'lat', 'lon', 'image', 'comment']
-
-SUBCLASS_LIST = [('bryidae', 'Bryidae'), 
-				('andreaeidae', 'Andreaeidae'), 
-				('sphagnidae', 'Sphagnidae')]
-
-class DefinerSubClass(forms.Form):
-	radio_button = forms.CharField(label='Выберите соответствие для найденного Вами мха, чтоб определить его подкласс',
-		widget=forms.RadioSelect(choices=SUBCLASS_LIST))
-
-class Test(forms.Form):
-	text = forms.CharField(label='some text for testing', widget=forms.TextInput(
-														attrs={'placeholder': 'input text here'}))
 
 class HomepageImagesForm(forms.ModelForm):
 	class Meta:
