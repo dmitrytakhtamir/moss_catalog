@@ -5,31 +5,30 @@
 
 <div class="list-group">
 	{% if taxons_list %}
-		{% for taxons in taxons_list %}
-			{% for taxon in taxons %}
-			  <a href="{% url 'taxons:universal_taxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
-			  	<div>
-			  		<div style='display: inline-block;'>
-			  	{% if taxon.img %}
-			  	<img height=100 alt='' src='{{taxon.img.url}}'>
-			  	{% endif %}
-			    </div>
-			  		<div style='display: inline-block;'>
-			  			<h3 class="mb-3">{{taxon.name}}</h3>
-			  		</div>
-			  	</div>
-			    <div class="d-flex w-100 justify-content-between">
-			      <small>{{taxon.date}}</small>
-			    </div>
-			    <p class="mb-3">{{taxon.description}}</p>
-			    <small>Родительский таксон: <strong>{{taxon.parent_taxon}}</strong></small>
-			  </a>
-			{% endfor %}
+		{% for taxon in taxons_list %}
+		  <a href="{% url 'taxons:universal_taxon' taxon.name %}" class="list-group-item list-group-item-action flex-column align-items-start">
+		  	<div>
+		  		<div style='display: inline-block;'>
+		  	{% if taxon.img %}
+		  	<img height=100 alt='' src='{{taxon.img.url}}'>
+		  	{% endif %}
+		    </div>
+		  		<div style='display: inline-block;'>
+		  			<h3 class="mb-3">{{taxon.name}}</h3>
+		  		</div>
+		  	</div>
+		    <div class="d-flex w-100 justify-content-between">
+		      <small>{{taxon.date}}</small>
+		    </div>
+		    <p class="mb-3">{{taxon.description}}</p>
+		    <small>Родительский таксон: <strong>{{taxon.parent_taxon}}</strong></small>
+		  </a>
 		{% endfor %}
 	{% else %}
 		<b align='center'>{{bad_request}}
 			<br><br>
 			<p><img height=200 width=200 src="{% static 'sad_smile.png' %}"></p></b>
+
 	{% endif %}
 </div>
 
