@@ -499,8 +499,9 @@ def to_map(request):
 
 		folium.Marker(location=[point.lat, point.lon], popup = popup, tooltip=tooltip,
 			icon=folium.Icon(icon='cloud', color = 'green')).add_to(cluster)
-	BASE_DIR = Path(__file__).resolve().parent.parent
-	map.save(os.path.join(BASE_DIR, 'map.html'))
+
+	BASE_DIR = Path(__file__).resolve().parent
+	map.save(os.path.join(BASE_DIR, 'templates\\map.html'))
 	return render(request, 'map.html')
 
 def add_point(request):
@@ -528,14 +529,13 @@ def add_point(request):
 					rel_form.save()
 		elif request.FILES:
 			if form.is_valid():
-				form.image = form.cleaned_data['image']
 				file = request.FILES['image']
 				data = gpsphoto.getGPSData(str(file.temporary_file_path()))
 				name = form.cleaned_data['name']
 				lat = data.get('Latitude')
 				lon = data.get('Longitude')
 				img = form.cleaned_data['image']
-				new_marker(name, lat, lon, img)
+				new_marker(name, lat, lon, file)
 
 				try:
 					species = Species.objects.get(name=name)
@@ -552,7 +552,7 @@ def add_point(request):
 					rel_form.relation = None
 					rel_form.creator = request.user
 					rel_form.save()
-			return redirect('to_map')
+				return redirect('to_map')
 
 	return render(request, 'add_point_on_map.html', {'form': form})
 
