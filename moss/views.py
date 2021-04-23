@@ -26,6 +26,7 @@ import re
 
 
 def home(request):
+	'''Главная страница'''
 	species = Species.objects.order_by('name')
 	all_obj = Species.objects.all()
 	myFilter = OrderFilter(request.GET, queryset=species)
@@ -104,6 +105,7 @@ def homepage_images(request):
 	return render(request, 'home.html')
 
 def base_settings(request):
+	'''Поисковая строка в закрепленной верху панели'''
 	taxons = (Division, Class, Subclass, Order, Family, Genus, Species)
 	search_query = request.GET.get('search', '')
 	taxons_list = []
@@ -126,8 +128,8 @@ def base_settings(request):
 	return render(request, 'taxons_search_list.html', context)
 
 
-#универсальная функция для обработки объекта любой модели
 def universal_taxon(request, name):
+	'''Универсальная функция для обработки объекта любой модели'''
 	obj = TaxonFinder(name=name)
 	taxon = obj.taxon_object() #поиск объекта среди всех классов таксонов
 	tax = obj.taxon_model() #определение названия класса, содежащего в себе этот объект
@@ -230,7 +232,7 @@ def new_taxon(request):
 	в форму связанную с моделью - название модели берется из атрибута rank первой формы, который выбирает пользователь.
 	Функция большая, и можно было бы сделать вместо нее множество однотипных и 
 	более простых, но очень хотелось создать именно универсальную функцию :)'''
-	taxons = [(i.identifier, i.name) for i in Taxa.objects.all()] #Спиок с названиями всех классов для создания новых записей
+	taxons = [(i.identifier, i.name) for i in Taxa.objects.all()] #Спиок с названиями всех классов
 	class NewTaxon(forms.Form):
 		rank = forms.CharField(label='Выберите ранг растения', widget=forms.RadioSelect(choices=taxons))
 		name = forms.CharField(label='Название')
@@ -275,7 +277,7 @@ def new_taxon(request):
 							obj = TaxonFinder(name=form_name) #для определения в след.строке названия класса с изображениями
 							model_name = obj.taxon_images_model()
 
-							#загрузка множественных изображений
+							#загрузка изображений
 							for f in request.FILES.getlist('images'):
 								data = f.read()
 								image_obj = model_name(taxon=new_object)
