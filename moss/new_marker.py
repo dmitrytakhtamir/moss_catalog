@@ -5,12 +5,11 @@ from folium import IFrame
 from folium.plugins import FloatImage
 import base64
 
-def new_marker(name, lat, lon, img):
+def new_marker(name, lat, lon, file):
 	map = folium.Map(location=[59.9453399167, 30.4518636944], zoom_start = 5)
 	tooltip = name
-	file =  str(img)
 	dir_base = os.getcwd()
-	Filename = dir_base + '\\static\\images\\' + file
+	Filename = file.temporary_file_path()
 	print(str(Filename))
 	encoded = base64.b64encode(open(Filename, 'rb').read())
 
@@ -26,18 +25,3 @@ def new_marker(name, lat, lon, img):
 
 	folium.Marker(location=[lat, lon], popup = popup, 
 		icon=folium.Icon(icon='cloud', color = 'green'), tooltip=tooltip).add_to(map)
-
-	#folium.Marker(location=[lat, lon], popup = name, icon=folium.Icon(icon='cloud', color = 'green')).add_to(map)
-	#map.save("C:/Pyenv/moss_catalog/moss/templates/map4.html")
-"""
-		marker_cluster = MarkerCluster().add_to(map)
-	
-		folium.CircleMarker(location=[lat, lon], popup = name, 
-			icon = folium.Icon(icon='cloud'), fill_color='green, color='gray', fill_opacity = 0.9).add_to(marker_cluster)
-	"""	
-			
-	#logoIcon = folium.features.CustomIcon('ptilium.jpg', icon_size=(50, 50))
-
-
-
-
