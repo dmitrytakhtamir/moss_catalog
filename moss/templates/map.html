@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_24e15f5da0cc40f5b7da66c199d6a389 {
+                #map_83b2ee095fef4628ab4f8aadea84c4a9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -38,13 +38,13 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_24e15f5da0cc40f5b7da66c199d6a389" ></div>
+            <div class="folium-map" id="map_83b2ee095fef4628ab4f8aadea84c4a9" ></div>
         
 </body>
 <script>    
     
-            var map_24e15f5da0cc40f5b7da66c199d6a389 = L.map(
-                "map_24e15f5da0cc40f5b7da66c199d6a389",
+            var map_83b2ee095fef4628ab4f8aadea84c4a9 = L.map(
+                "map_83b2ee095fef4628ab4f8aadea84c4a9",
                 {
                     center: [59.9453399167, 30.4518636944],
                     crs: L.CRS.EPSG3857,
@@ -58,46 +58,79 @@
 
         
     
-            var tile_layer_676e2294d96649a48d12e6791cccd707 = L.tileLayer(
+            var tile_layer_7d2a07183de348eabe7694b78fcc4285 = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_24e15f5da0cc40f5b7da66c199d6a389);
+            ).addTo(map_83b2ee095fef4628ab4f8aadea84c4a9);
         
     
-            var marker_cluster_3b3c403f1b8d4534b012f5b635a07d6f = L.markerClusterGroup(
+            var marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b = L.markerClusterGroup(
                 {}
             );
-            map_24e15f5da0cc40f5b7da66c199d6a389.addLayer(marker_cluster_3b3c403f1b8d4534b012f5b635a07d6f);
+            map_83b2ee095fef4628ab4f8aadea84c4a9.addLayer(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
         
     
-            var marker_ac54cfdd45d54a2d8330d0fdd5695058 = L.marker(
+            var marker_ece98ea5284d4a1f81354a440fbc9222 = L.marker(
                 [59.9453399167, 30.4518636944],
                 {}
-            ).addTo(marker_cluster_3b3c403f1b8d4534b012f5b635a07d6f);
+            ).addTo(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
         
     
-            var icon_29a4a1ec86954b74910fc538367f2dbe = L.AwesomeMarkers.icon(
+            var icon_4961b10a32cd49198d97ce37570d4285 = L.AwesomeMarkers.icon(
                 {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
             );
-            marker_ac54cfdd45d54a2d8330d0fdd5695058.setIcon(icon_29a4a1ec86954b74910fc538367f2dbe);
+            marker_ece98ea5284d4a1f81354a440fbc9222.setIcon(icon_4961b10a32cd49198d97ce37570d4285);
         
     
-        var popup_8018806e044548efa969e6d9e60e004e = L.popup({"maxWidth": 650});
+        var popup_817ccb2a1edb4e778879c52cc2d9f1c5 = L.popup({"maxWidth": 650});
 
         
-            var i_frame_5a1141cf099f4dd3b8a245ee17579f9e = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+U2FuaW9uaWEgVW5jaW5hdGE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
-            popup_8018806e044548efa969e6d9e60e004e.setContent(i_frame_5a1141cf099f4dd3b8a245ee17579f9e);
+            var i_frame_067e49da86e544068e58b267588fd20e = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+U2FuaW9uaWEgVW5jaW5hdGE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_817ccb2a1edb4e778879c52cc2d9f1c5.setContent(i_frame_067e49da86e544068e58b267588fd20e);
         
 
-        marker_ac54cfdd45d54a2d8330d0fdd5695058.bindPopup(popup_8018806e044548efa969e6d9e60e004e)
+        marker_ece98ea5284d4a1f81354a440fbc9222.bindPopup(popup_817ccb2a1edb4e778879c52cc2d9f1c5)
         ;
 
         
     
     
-            marker_ac54cfdd45d54a2d8330d0fdd5695058.bindTooltip(
+            marker_ece98ea5284d4a1f81354a440fbc9222.bindTooltip(
                 `<div>
                      Sanionia Uncinata
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d77d1484505345fea8acf593aa452361 = L.marker(
+                [61.9485320278, 30.573712],
+                {}
+            ).addTo(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
+        
+    
+            var icon_1b65c0be0ffc478ebeb9acc7a2a75fb0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d77d1484505345fea8acf593aa452361.setIcon(icon_1b65c0be0ffc478ebeb9acc7a2a75fb0);
+        
+    
+        var popup_0348178bc49840e985906a3eca094acd = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_62a6a6119fde43f0973269d6982a9fda = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+QWJpZXRpbmVsbGEgYWJpZXRpbmE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_0348178bc49840e985906a3eca094acd.setContent(i_frame_62a6a6119fde43f0973269d6982a9fda);
+        
+
+        marker_d77d1484505345fea8acf593aa452361.bindPopup(popup_0348178bc49840e985906a3eca094acd)
+        ;
+
+        
+    
+    
+            marker_d77d1484505345fea8acf593aa452361.bindTooltip(
+                `<div>
+                     Abietinella abietina
                  </div>`,
                 {"sticky": true}
             );
