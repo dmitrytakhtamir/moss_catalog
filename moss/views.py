@@ -485,7 +485,7 @@ def books(request):
 
 def to_map(request):
 	'''Открывает карту, на которой имеются отметки с наблюдениями'''
-	map = folium.Map(location=[59.9453399167, 30.4518636944], zoom_start = 5)
+	map = folium.Map(location=[59.9453399167, 30.4518636944], zoom_start = 6)
 
 	cluster = MarkerCluster().add_to(map)
 	all_points = TaxonOnMap.objects.all()
