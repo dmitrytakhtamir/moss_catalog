@@ -103,18 +103,6 @@ def homepage_images(request):
 
 	return render(request, 'home.html')
 
-def base(request):
-	sp_span = len(Species.objects.all())
-	gen_span = len(Genus.objects.all())
-	subclass_span = len(Subclass.objects.all())
-	books_span = len(Book.objects.all())
-	points_span = len(TaxonOnMap.objects.all())
-
-
-	context = {'sp_span': sp_span, 'gen_span': gen_span, 'books_span': books_span,
-			'points_span': points_span, 'subclass_span': subclass_span}
-	return render(request, 'base.html', context)
-
 def base_settings(request):
 	taxons = (Division, Class, Subclass, Order, Family, Genus, Species)
 	search_query = request.GET.get('search', '')
