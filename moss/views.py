@@ -135,7 +135,7 @@ def base_settings(request):
 					pass
 
 	context = {'search_query': search_query, 'taxons_list': taxons_list, 'bad_request': bad_request}
-	return render(request, 'taxons_list.html', context)
+	return render(request, 'taxons_search_list.html', context)
 
 
 #универсальная функция для обработки объекта любой модели
