@@ -2,10 +2,17 @@
 {% load bootstrap4 %}
 {% block content %}
 
+<p>Если фотография содержит геоданныуе, то вводить широту и долготу не требуется</p>
 <form action="{% url 'add_point' %}" method='post' enctype="multipart/form-data">
 	{% csrf_token %}
-	{{form.as_p}}
-	<button name='submit'>Добавить точку</button>
+	{% buttons %}
+	<button class="btn btn-info" name='submit'>Добавить точку</button>
+	{% endbuttons %}
+	{% bootstrap_form form %}
+	{% buttons %}
+	<button class="btn btn-info" name='submit'>Добавить точку</button>
+	{% endbuttons %}
+	
 </form>
 
 {% endblock %}
