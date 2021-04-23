@@ -39,8 +39,6 @@ urlpatterns = [
     path('add_point/', views.add_point, name='add_point'),
     path('point_page/<int:point_id>/', views.point_page, name='point_page'),
     path('points_list/', views.points_list, name='points_list'),
-
-    path('base/', views.base, name='base'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
