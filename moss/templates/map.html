@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_83b2ee095fef4628ab4f8aadea84c4a9 {
+                #map_a5aed26035ed4b5da61637a3455da33f {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -38,17 +38,17 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_83b2ee095fef4628ab4f8aadea84c4a9" ></div>
+            <div class="folium-map" id="map_a5aed26035ed4b5da61637a3455da33f" ></div>
         
 </body>
 <script>    
     
-            var map_83b2ee095fef4628ab4f8aadea84c4a9 = L.map(
-                "map_83b2ee095fef4628ab4f8aadea84c4a9",
+            var map_a5aed26035ed4b5da61637a3455da33f = L.map(
+                "map_a5aed26035ed4b5da61637a3455da33f",
                 {
                     center: [59.9453399167, 30.4518636944],
                     crs: L.CRS.EPSG3857,
-                    zoom: 5,
+                    zoom: 6,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -58,44 +58,44 @@
 
         
     
-            var tile_layer_7d2a07183de348eabe7694b78fcc4285 = L.tileLayer(
+            var tile_layer_ae5dd82dd9ef47b5aeb2a2bf4b114df2 = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_83b2ee095fef4628ab4f8aadea84c4a9);
+            ).addTo(map_a5aed26035ed4b5da61637a3455da33f);
         
     
-            var marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b = L.markerClusterGroup(
+            var marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7 = L.markerClusterGroup(
                 {}
             );
-            map_83b2ee095fef4628ab4f8aadea84c4a9.addLayer(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
+            map_a5aed26035ed4b5da61637a3455da33f.addLayer(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
         
     
-            var marker_ece98ea5284d4a1f81354a440fbc9222 = L.marker(
+            var marker_15bb157d846b4e509bdddd79873c2c7a = L.marker(
                 [59.9453399167, 30.4518636944],
                 {}
-            ).addTo(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
         
     
-            var icon_4961b10a32cd49198d97ce37570d4285 = L.AwesomeMarkers.icon(
+            var icon_ef6ad18ea3b849059acd3cfc7e69d26c = L.AwesomeMarkers.icon(
                 {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
             );
-            marker_ece98ea5284d4a1f81354a440fbc9222.setIcon(icon_4961b10a32cd49198d97ce37570d4285);
+            marker_15bb157d846b4e509bdddd79873c2c7a.setIcon(icon_ef6ad18ea3b849059acd3cfc7e69d26c);
         
     
-        var popup_817ccb2a1edb4e778879c52cc2d9f1c5 = L.popup({"maxWidth": 650});
+        var popup_bafebd0e6826478d957418cddc419f2b = L.popup({"maxWidth": 650});
 
         
-            var i_frame_067e49da86e544068e58b267588fd20e = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+U2FuaW9uaWEgVW5jaW5hdGE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
-            popup_817ccb2a1edb4e778879c52cc2d9f1c5.setContent(i_frame_067e49da86e544068e58b267588fd20e);
+            var i_frame_78a384d9b19647fa89b2a72429a82991 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+U2FuaW9uaWEgVW5jaW5hdGE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_bafebd0e6826478d957418cddc419f2b.setContent(i_frame_78a384d9b19647fa89b2a72429a82991);
         
 
-        marker_ece98ea5284d4a1f81354a440fbc9222.bindPopup(popup_817ccb2a1edb4e778879c52cc2d9f1c5)
+        marker_15bb157d846b4e509bdddd79873c2c7a.bindPopup(popup_bafebd0e6826478d957418cddc419f2b)
         ;
 
         
     
     
-            marker_ece98ea5284d4a1f81354a440fbc9222.bindTooltip(
+            marker_15bb157d846b4e509bdddd79873c2c7a.bindTooltip(
                 `<div>
                      Sanionia Uncinata
                  </div>`,
@@ -103,34 +103,199 @@
             );
         
     
-            var marker_d77d1484505345fea8acf593aa452361 = L.marker(
+            var marker_585723aa28b44687aa21db793f08dbce = L.marker(
                 [61.9485320278, 30.573712],
                 {}
-            ).addTo(marker_cluster_a3f74065d7f64f3c8da481b87bf24a5b);
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
         
     
-            var icon_1b65c0be0ffc478ebeb9acc7a2a75fb0 = L.AwesomeMarkers.icon(
+            var icon_fe2c4b387336489e8b22748af1634c89 = L.AwesomeMarkers.icon(
                 {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
             );
-            marker_d77d1484505345fea8acf593aa452361.setIcon(icon_1b65c0be0ffc478ebeb9acc7a2a75fb0);
+            marker_585723aa28b44687aa21db793f08dbce.setIcon(icon_fe2c4b387336489e8b22748af1634c89);
         
     
-        var popup_0348178bc49840e985906a3eca094acd = L.popup({"maxWidth": 650});
+        var popup_8b88f2a0f1194cebb9c9d5d4b2d579ab = L.popup({"maxWidth": 650});
 
         
-            var i_frame_62a6a6119fde43f0973269d6982a9fda = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+QWJpZXRpbmVsbGEgYWJpZXRpbmE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
-            popup_0348178bc49840e985906a3eca094acd.setContent(i_frame_62a6a6119fde43f0973269d6982a9fda);
+            var i_frame_1bcdd991e735445d9402350eabfdc906 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+QWJpZXRpbmVsbGEgYWJpZXRpbmE8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_8b88f2a0f1194cebb9c9d5d4b2d579ab.setContent(i_frame_1bcdd991e735445d9402350eabfdc906);
         
 
-        marker_d77d1484505345fea8acf593aa452361.bindPopup(popup_0348178bc49840e985906a3eca094acd)
+        marker_585723aa28b44687aa21db793f08dbce.bindPopup(popup_8b88f2a0f1194cebb9c9d5d4b2d579ab)
         ;
 
         
     
     
-            marker_d77d1484505345fea8acf593aa452361.bindTooltip(
+            marker_585723aa28b44687aa21db793f08dbce.bindTooltip(
                 `<div>
                      Abietinella abietina
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56a026c849ed49d09af6cf3b7e29f7f5 = L.marker(
+                [61.9485749444, 30.5736921389],
+                {}
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
+        
+    
+            var icon_6ec4efaf35484650b6128f10677ed159 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_56a026c849ed49d09af6cf3b7e29f7f5.setIcon(icon_6ec4efaf35484650b6128f10677ed159);
+        
+    
+        var popup_55fffe46894845c4ab128379f17804a5 = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_286d06c7e7664ed3a7fff7facde44aed = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+Umh5dGlkaWFkZWxwaHVzIHRyaXF1ZXRydXM8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_55fffe46894845c4ab128379f17804a5.setContent(i_frame_286d06c7e7664ed3a7fff7facde44aed);
+        
+
+        marker_56a026c849ed49d09af6cf3b7e29f7f5.bindPopup(popup_55fffe46894845c4ab128379f17804a5)
+        ;
+
+        
+    
+    
+            marker_56a026c849ed49d09af6cf3b7e29f7f5.bindTooltip(
+                `<div>
+                     Rhytidiadelphus triquetrus
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d50c9bf3df84d4aa552a37da484e3ba = L.marker(
+                [61.9485677222, 30.5734105278],
+                {}
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
+        
+    
+            var icon_a9b1dea5d4d94e2cb28cf5569eb890fd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2d50c9bf3df84d4aa552a37da484e3ba.setIcon(icon_a9b1dea5d4d94e2cb28cf5569eb890fd);
+        
+    
+        var popup_cef5a8f8ec8a4a47a2e0f87fcda56de0 = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_e4e71eee147f4c609b79e7755acdb570 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+UmFjb21pdHJpdW0gbGFudWdpbm9zdW08L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_cef5a8f8ec8a4a47a2e0f87fcda56de0.setContent(i_frame_e4e71eee147f4c609b79e7755acdb570);
+        
+
+        marker_2d50c9bf3df84d4aa552a37da484e3ba.bindPopup(popup_cef5a8f8ec8a4a47a2e0f87fcda56de0)
+        ;
+
+        
+    
+    
+            marker_2d50c9bf3df84d4aa552a37da484e3ba.bindTooltip(
+                `<div>
+                     Racomitrium lanuginosum
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bf79878ba484469da98cf500507d8e62 = L.marker(
+                [61.7056076111, 30.6852284722],
+                {}
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
+        
+    
+            var icon_95a9b434a0d74afc8af40af79d705acb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_bf79878ba484469da98cf500507d8e62.setIcon(icon_95a9b434a0d74afc8af40af79d705acb);
+        
+    
+        var popup_441ef3b47a9e4f80a2f57576d72078e1 = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_c0824632d6164212a53bf7b34b435c54 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+RW5jYWx5cHRhPC9oMz48aDQ+PC9oND4=" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_441ef3b47a9e4f80a2f57576d72078e1.setContent(i_frame_c0824632d6164212a53bf7b34b435c54);
+        
+
+        marker_bf79878ba484469da98cf500507d8e62.bindPopup(popup_441ef3b47a9e4f80a2f57576d72078e1)
+        ;
+
+        
+    
+    
+            marker_bf79878ba484469da98cf500507d8e62.bindTooltip(
+                `<div>
+                     Encalypta
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c7c5fa98f1724e329e66fc509a55379f = L.marker(
+                [60.1789424167, 29.7905761111],
+                {}
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
+        
+    
+            var icon_5a81f5b338734a84b2518acd0430ac07 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c7c5fa98f1724e329e66fc509a55379f.setIcon(icon_5a81f5b338734a84b2518acd0430ac07);
+        
+    
+        var popup_1c2da1997e364009bc6ae913f16128a6 = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_380a7d92226c4508b4c8075693cceeaa = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+SHlsb2NvbWl1bSBzcGxlbmRlbnM8L2gzPjxoND48L2g0Pg==" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_1c2da1997e364009bc6ae913f16128a6.setContent(i_frame_380a7d92226c4508b4c8075693cceeaa);
+        
+
+        marker_c7c5fa98f1724e329e66fc509a55379f.bindPopup(popup_1c2da1997e364009bc6ae913f16128a6)
+        ;
+
+        
+    
+    
+            marker_c7c5fa98f1724e329e66fc509a55379f.bindTooltip(
+                `<div>
+                     Hylocomium splendens
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5c10fb82d60f4bd6b4d260e366930d43 = L.marker(
+                [60.1790426944, 29.7797843056],
+                {}
+            ).addTo(marker_cluster_bb5b0cd6bb4744f5ae71aebbea7e1ed7);
+        
+    
+            var icon_45f1f57ad6e64d5eb28581a947bcf16f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_5c10fb82d60f4bd6b4d260e366930d43.setIcon(icon_45f1f57ad6e64d5eb28581a947bcf16f);
+        
+    
+        var popup_83d813d595614b17badc11df50943ef7 = L.popup({"maxWidth": 650});
+
+        
+            var i_frame_e934a4c4ca5c441a8d6ba992bd71ec35 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKCQk8aDM+T3J0aG90cmljaHVtIHNwZWNpb3N1bTwvaDM+PGg0PjwvaDQ+" width="130" style="border:none !important;" height="120"></iframe>`)[0];
+            popup_83d813d595614b17badc11df50943ef7.setContent(i_frame_e934a4c4ca5c441a8d6ba992bd71ec35);
+        
+
+        marker_5c10fb82d60f4bd6b4d260e366930d43.bindPopup(popup_83d813d595614b17badc11df50943ef7)
+        ;
+
+        
+    
+    
+            marker_5c10fb82d60f4bd6b4d260e366930d43.bindTooltip(
+                `<div>
+                     Orthotrichum speciosum
                  </div>`,
                 {"sticky": true}
             );
