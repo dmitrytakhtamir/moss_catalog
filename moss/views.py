@@ -257,15 +257,12 @@ def new_taxon(request):
 			rank_type = form.cleaned_data['rank']
 			for taxon in taxons_list:
 				if rank_type == taxon.__name__:
-					#parent_taxon = taxons_list[taxons_list.index(taxon) - 1]
-					#parents_list = [(i.name, i.name) for i in parent_taxon.objects.all()]
-
 					#создание второй формы, в которую передадутся данные из первой
 					class TaxonCreation(forms.ModelForm):
 						class Meta:
 							model = taxon
 							fields =  '__all__'
-							exclude = ['img']
+							exclude = ['img', 'parent_taxon']
 
 
 					form = TaxonCreation()
@@ -275,7 +272,6 @@ def new_taxon(request):
 							form_name = form.cleaned_data['name']
 							form = form.save(commit=False)
 							form.creator = request.user
-							form.parent_taxon = form.parent_taxon
 							for i in Taxa.objects.all():
 								if i.identifier == rank_type:
 									try:
